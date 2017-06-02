@@ -18,3 +18,8 @@ keywords: JAVA, 注解, Annotation
   - @Inherited
 
 这些类型和它们所支持的类在java.lang.annotation包中可以找到。下面我们看一下每个元注解的作用和相应分参数的使用说明。
+
+## @Target
+ - 作用：用于描述注解的使用范围（即：被描述的注解可以用在什么地方）
+ - 说明：@Target定义的注解所修饰的对象范围：根据@Target给定的值可被用于 packages、types（类、接口、枚举、Annotation类型）、类型成员（方法、构造方法、成员变量、枚举值）、方法参数和本地变量（如循环变量、catch参数）。
+ - @Target取值(ElementType)有：
