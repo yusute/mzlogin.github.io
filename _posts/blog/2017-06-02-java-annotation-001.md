@@ -15,6 +15,11 @@ keywords: JAVA, 注解, Annotation
   Java5.0定义的元注解：
 
   * @Target
+
 　* @Retention
+
 　* @Documented
+
 　* @Inherited
+
+这些类型和它们所支持的类在java.lang.annotation包中可以找到。下面我们看一下每个元注解的作用和相应分参数的使用说明。
