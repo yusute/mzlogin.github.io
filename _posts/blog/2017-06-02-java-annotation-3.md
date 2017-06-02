@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Java注解学习（二）、注解解析器
+title: Java注解学习（三）、注解解析器
 categories: JAVA 注解
 description: 如果没有注解解析器，那么注解也就不会比注释更有用处了。使用注解的过程中，很重要的一部分就是创建于使用注解解析器。Java通过反射机制的API，快速的构造自定义注解解析器。
 keywords: JAVA, 注解, Annotation
