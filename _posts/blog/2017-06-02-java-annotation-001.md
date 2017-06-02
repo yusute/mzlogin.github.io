@@ -10,9 +10,10 @@ keywords: JAVA, 注解, Annotation
 
 ## 元注解
 
-* 元注解（meta annotation）的作用就是负责注解其他注解。Java5.0定义了4个标准的元注解类型，它们被用来提供对其它注解类型作说明。
+元注解（meta annotation）的作用就是负责注解其他注解。Java5.0定义了4个标准的元注解类型，它们被用来提供对其它注解类型作说明。
 
   Java5.0定义的元注解：
+
   * @Target
 　* @Retention
 　* @Documented
