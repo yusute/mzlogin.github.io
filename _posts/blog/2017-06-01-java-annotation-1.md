@@ -2,7 +2,7 @@
 layout: post
 title: Java注解学习（一）、注解（Annotion）基本概念
 categories: JAVA 注解
-description: 注解是Java提供了一种元程序中的元素关联任何信息和任何元数据（metadata）的途径和方法。注解是一个接口，程序可以通过反射来获取指定程序元素的Annotion对象，然后通过Annotion对象来获取注解里面的元数据.
+description: 注解是Java提供了一种元程序中的元素关联任何信息和任何元数据（metadata）的途径和方法。注解是一个接口，程序可以通过反射来获取指定程序元素的Annotion对象，然后通过Annotion对象来获取注解里面的元数据。
 keywords: JAVA, 注解, Annotation
 ---
 
