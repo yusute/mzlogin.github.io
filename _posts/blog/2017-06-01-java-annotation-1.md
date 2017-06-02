@@ -28,3 +28,45 @@ Annotation能被用来为某个程序元素（类、方法、成员变量等）�
  2. 元数据描述的信息是类型安全的，即元数据内部的字段都是有明确类型的。
  3. 元数据需要编译器之外的工具额外的处理用来生成其它的程序部件。
  4. 元数据可以只存在于Java源代码级别，也可以存在于编译之后的Class文件内部。
+
+ ##  Annotation和Annotation类型
+  - Annotation
+  Annotation使用了在java5.0所带来的新语法，它的行为十分类似public、final这样的修饰符。每个Annotation具有一个名字和成员个数>=0。每个Annotation的成员具有被称为name=value对的名字和值（就像javabean一样），name=value装载了Annotation的信息。
+
+  - Annotation类型
+  Annotation类型定义了Annotation的名字、类型、成员默认值。一个Annotation类型可以说是一个特殊的java接口，它的成员变量是受限制的，而声明Annotation类型时需要使用新语法。当我们通过java反射api访问Annotation时，返回值将是一个实现了该annotation类型接口的对象，通过访问这个对象我们能方便的访问到其Annotation成员。
+
+## 注解的分类
+ - 根据注解参数的个数，我们可以将注解分为三类：
+ 1. 标记注解:一个没有成员定义的Annotation类型被称为标记注解。这种Annotation类型仅使用自身的存在与否来为我们提供信息。比如后面的系统注解@Override;
+ 2. 单值注解
+ 3. 完整注解　　
+
+ - 根据注解使用方法和用途，我们可以将Annotation分为三类：
+ 1. JDK内置系统注解
+ 2. 元注解
+ 3. 自定义注解
+
+## 内置标准注解
+注解的语法比较简单，除了@符号的使用外，他基本与Java固有的语法一致，JavaSE中内置三个标准注解，定义在java.lang中：
+ - @Override：用于修饰此方法覆盖了父类的方法;
+@Override 是一个标记注解类型，它被用作标注方法。它说明了被标注的方法重载了父类的方法，起到了断言的作用。如果我们使用了这种Annotation在一个没有覆盖父类方法的方法时，java编译器将以一个编译错误来警示。这个annotaton常常在我们试图覆盖父类方法而确又写错了方法名时发挥威力。使用方法极其简单：在使用此annotation时只要在被修饰的方法前面加上@Override即可。
+ - @Deprecated：用于修饰已经过时的方法;
+@Deprecated也是一个标记注解。当一个类型或者类型成员使用@Deprecated修饰的话，编译器将不鼓励使用这个被标注的程序元素。而且这种修饰具有一定的 “延续性”：如果我们在代码中通过继承或者覆盖的方式使用了这个过时的类型或者成员，虽然继承或者覆盖后的类型或者成员并不是被声明为 @Deprecated，但编译器仍然要报警。
+ - @SuppressWarnnings:用于通知java编译器禁止特定的编译警告。
+ @SuppressWarnings 被用于有选择的关闭编译器对类、方法、成员变量、变量初始化的警告。在java5.0，sun提供的javac编译器为我们提供了-Xlint选项来使编译器对合法的程序代码提出警告，此种警告从某种程度上代表了程序错误。例如当我们使用一个generic collection类而又没有提供它的类型时，编译器将提示出"unchecked warning"的警告。通常当这种情况发生时，我们就需要查找引起警告的代码。如果它真的表示错误，我们就需要纠正它。例如如果警告信息表明我们代码中的switch语句没有覆盖所有可能的case，那么我们就应增加一个默认的case来避免这种警告。
+
+ 有时我们无法避免这种警告，例如，我们使用必须和非generic的旧代码交互的generic collection类时，我们不能避免这个unchecked warning。此时@SuppressWarning就要派上用场了，在调用的方法前增加@SuppressWarnings修饰，告诉编译器停止对此方法的警告。
+ SuppressWarning不是一个标记注解。它有一个类型为String[]的成员，这个成员的值为被禁止的警告名。对于javac编译器来讲，被-Xlint选项有效的警告 名也同样对@SuppressWarings有效，同时编译器忽略掉无法识别的警告名。
+
+ annotation语法允许在annotation名后跟括号，括号中是使用逗号分割的name=value对用于为annotation的成员赋值。
+
+ SuppressWarnings注解的常见参数值的简单说明：
+
+ 1. deprecation：使用了不赞成使用的类或方法时的警告；
+ 2. unchecked：执行了未检查的转换时的警告，例如当使用集合时没有用泛型 (Generics) 来指定集合保存的类型;
+ 3. fallthrough：当 Switch 程序块直接通往下一种情况而没有 Break 时的警告;
+ 4. path：在类路径、源文件路径等中有不存在的路径时的警告;
+ 5. serial：当在可序列化的类上缺少 serialVersionUID 定义时的警告;
+ 6. finally：任何 finally 子句不能正常完成时的警告;
+ 7. all：关于以上所有情况的警告。
