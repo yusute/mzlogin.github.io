@@ -50,6 +50,9 @@ keywords: JAVA, 注解, Annotation
 ## @Inherited
  - 作用：@Inherited阐述了某个被标注的类型是被继承的。如果一个使用了@Inherited修饰的annotation类型被用于一个class，则这个annotation将被用于该class的子类。即允许子类集成父类的注解，@Inherited 元注解是一个标记注解。
 
+ ## @Repeatable
+  - 作用：可以在同一个位置重复相同的注解。
+
 ## 自定义注解
 使用@interface自定义注解时，自动继承了java.lang.annotation.Annotation接口，由编译程序自动完成其他细节。在定义注解时，不能继承其他的注解或接口。@interface用来声明一个注解，其中的每一个方法实际上是声明了一个配置参数。方法的名称就是参数的名称，返回值类型就是参数的类型（返回值类型只能是基本类型、Class、String、enum）。可以通过default来声明参数的默认值。
  - 定义注解格式：
